@@ -35,19 +35,20 @@ function render(variables = {}) {
   const role = variables.role == null ? "Select Role" : variables.role;
   const country =
     variables.country == null ? "Select Country" : variables.country;
-  let twitter =
+
+  const twitter =
     variables.twitter == null
       ? ""
       : `<li><a href="https://twitter.com/${variables.twitter}"><i class="fab fa-twitter"></i></a></li>`;
-  let github =
+  const github =
     variables.github == null
       ? ""
       : `<li><a href="https://github.com/${variables.github}"><i class="fab fa-github"></i></a></li>`;
-  let linkedin =
+  const linkedin =
     variables.linkedin == null
       ? ""
       : `<li><a href="https://linkedin.com/${variables.linkedin}"><i class="fab fa-linkedin"></i></a></li>`;
-  let instagram =
+  const instagram =
     variables.instagram == null
       ? ""
       : `<li><a href="https://instagram.com/${variables.instagram}"><i class="fab fa-instagram"></i></a></li>`;
