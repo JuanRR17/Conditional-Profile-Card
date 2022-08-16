@@ -49,12 +49,13 @@ function render(variables = {}) {
   //     socialMediaList += `<li><a href="https://${social.web}.com/${social.user}"><i class="fab fa-${social.web}"></i></a></li>`;
   //   }
   // });
+
   const socialMediaList = socialMedia
-    .map(social => {
-      if (social.user !== null) {
-        return `<li><a href="https://${social.web}.com/${social.user}"><i class="fab fa-${social.web}"></i></a></li>`;
-      }
-    })
+    .filter(social => social.user !== null)
+    .map(
+      social =>
+        `<li><a href="https://${social.web}.com/${social.user}"><i class="fab fa-${social.web}"></i></a></li>`
+    )
     .join("");
 
   // reset the website body with the new html output
