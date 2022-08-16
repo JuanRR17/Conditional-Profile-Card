@@ -36,22 +36,19 @@ function render(variables = {}) {
   const country =
     variables.country == null ? "Select Country" : variables.country;
 
-  const twitter =
-    variables.twitter == null
-      ? ""
-      : `<li><a href="https://twitter.com/${variables.twitter}"><i class="fab fa-twitter"></i></a></li>`;
-  const github =
-    variables.github == null
-      ? ""
-      : `<li><a href="https://github.com/${variables.github}"><i class="fab fa-github"></i></a></li>`;
-  const linkedin =
-    variables.linkedin == null
-      ? ""
-      : `<li><a href="https://linkedin.com/${variables.linkedin}"><i class="fab fa-linkedin"></i></a></li>`;
-  const instagram =
-    variables.instagram == null
-      ? ""
-      : `<li><a href="https://instagram.com/${variables.instagram}"><i class="fab fa-instagram"></i></a></li>`;
+  const socialMedia = [
+    { web: "twitter", user: variables.twitter },
+    { web: "github", user: variables.github },
+    { web: "linkedin", user: variables.linkedin },
+    { web: "instagram", user: variables.instagram }
+  ];
+
+  let socialMediaList = "";
+  socialMedia.forEach(social => {
+    if (social.user !== null) {
+      socialMediaList += `<li><a href="https://${social.web}.com/${social.user}"><i class="fab fa-${social.web}"></i></a></li>`;
+    }
+  });
 
   // reset the website body with the new html output
   document.querySelector("#widget_content").innerHTML = `<div class="widget">
@@ -61,10 +58,7 @@ function render(variables = {}) {
           <h2>${role}</h2>
           <h3>${city}, ${country}</h3>
           <ul class=${variables.socialMediaPosition}>
-            ${twitter}
-            ${github}
-            ${linkedin}
-            ${instagram}
+            ${socialMediaList}
           </ul>
         </div>
     `;
